@@ -1,0 +1,9 @@
+:linkattrs:
+:project-owner:   jreleaser
+:project-name:    jreleaser-opentelemetry-extension
+:project-group:   org.jreleaser.extensions
+:project-version: 1.0.0-SNAPSHOT
+
+---
+
+OpenTelemetry extension for JReleaser
