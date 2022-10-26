@@ -21,38 +21,6 @@ name: Build
 on:
   pull_request:
 
-env:
-  JAVA_VERSION: '11'
-  JAVA_DISTRO: 'zulu'
-
 jobs:
   build:
-    name: Build
-    runs-on: ubuntu-latest
-    if: startsWith(github.event.head_commit.message, 'Releasing version') != true
-
-    steps:
-      - uses: actions/checkout@v3
-
-      - name: Setup Java
-        uses: actions/setup-java@v3
-        with:
-          java-version: ${{ env.JAVA_VERSION }}
-          distribution: ${{ env.JAVA_DISTRO }}
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.gradle/caches
-          key: ${{ runner.os }}-gradle-${{ hashFiles('**/*.gradle') }}-${{ hashFiles('**/gradle.properties') }}
-          restore-keys: |
-            ${{ runner.os }}-gradle-
-
-      - uses: actions/cache@v3
-        with:
-          path: ~/.gradle/wrapper
-          key: ${{ runner.os }}-gradlew-${{ hashFiles('**/gradlew') }}
-          restore-keys: |
-            ${{ runner.os }}-gradlew-
-
-      - name: Build
-        run: ./gradlew build -S
+    uses: jreleaser/jreleaser-github-workflows/.github/workflows/extension-build.yml@main
