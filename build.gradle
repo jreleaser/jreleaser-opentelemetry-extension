@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 The JReleaser authors.
+ * Copyright 2022-2023 The JReleaser authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -19,7 +19,8 @@ config {
     info {
         description = 'OpenTelemetry extension for JReleaser'
         inceptionYear = '2022'
-        tags = ['release']
+        tags = ['observability', 'monitoring', 'jfr']
+        bytecodeVersion = 8
 
         links {
             website      = "https://github.com/jreleaser/${project.rootProject.name}"
@@ -82,6 +83,12 @@ tasks.withType(JavaCompiler) {
 
 license {
     exclude('build/**')
+}
+
+jar {
+    manifest {
+        attributes('Automatic-Module-Name': 'org.jreleaser.extensions.opentelemetry')
+    }
 }
 
 dependencies {

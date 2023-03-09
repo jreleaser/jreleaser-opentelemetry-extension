@@ -4,8 +4,8 @@
 :project-group:   org.jreleaser.extensions
 :project-version: 1.0.0-SNAPSHOT
 
-image:https://github.com/{project-owner}/{project-name}/workflows/EarlyAccess/badge.svg["Build Status", link="https://github.com/{project-owner}/{project-name}/actions"]
-image:https://img.shields.io/maven-central/v/{project-group}/{project-name}-core.svg[Download, link="https://search.maven.org/#search|ga|1|{project-name}"]
+image:https://github.com/{project-owner}/{project-name}/actions/workflows/early-access.yml/badge.svg["Build Status", link="https://github.com/{project-owner}/{project-name}/actions"]
+image:https://img.shields.io/maven-central/v/{project-group}/{project-name}.svg[Download, link="https://search.maven.org/#search|ga|1|{project-name}"]
 
 ---
 

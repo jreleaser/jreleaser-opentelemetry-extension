@@ -25,6 +25,10 @@ project:
     - Andres Almiray
   license: Apache-2.0
   inceptionYear: 2022
+  java:
+    groupId: org.jreleaser.extensions
+    artifactId: jreleaser-opentelemetry-extension
+    version: 8
 
 release:
   github:
@@ -34,9 +38,10 @@ release:
     changelog:
       formatted: ALWAYS
       preset: conventional-commits
-      format: '- {{commitShortHash}} {{commitTitle}}'
       contributors:
         format: '- {{contributorName}}{{#contributorUsernameAsLink}} ({{.}}){{/contributorUsernameAsLink}}'
+      extraProperties:
+        categorizeScopes: true
       labelers:
         - label: 'i18n'
           title: 'regex:^(?:i18n(?:\(.*\))?!?):\s.*'
@@ -64,6 +69,26 @@ release:
         - search: 'i18n: '
         - search: 'deps: '
 
+signing:
+  active: ALWAYS
+  armored: true
+
+deploy:
+  maven:
+    nexus2:
+      maven-central:
+        active: RELEASE
+        url: https://s01.oss.sonatype.org/service/local
+        closeRepository: true
+        releaseRepository: true
+        stagingRepositories:
+          - build/repos/local/release
+
 announce:
   twitter:
-    active: release
+    active: RELEASE
+    status: 🚀 {{projectName}} {{projectVersion}} has been released! {{releaseNotesUrl}}
+  mastodon:
+    active: RELEASE
+    host: https://fosstodon.org
+    status: 🚀 {{projectName}} {{projectVersion}} has been released! {{releaseNotesUrl}}

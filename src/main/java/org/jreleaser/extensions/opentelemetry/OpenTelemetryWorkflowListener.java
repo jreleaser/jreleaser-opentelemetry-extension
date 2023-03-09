@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 The JReleaser authors.
+ * Copyright 2022-2023 The JReleaser authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -28,6 +28,7 @@ import org.jreleaser.logging.JReleaserLogger;
 import org.jreleaser.model.api.JReleaserContext;
 import org.jreleaser.model.api.announce.Announcer;
 import org.jreleaser.model.api.assemble.Assembler;
+import org.jreleaser.model.api.catalog.Cataloger;
 import org.jreleaser.model.api.deploy.Deployer;
 import org.jreleaser.model.api.distributions.Distribution;
 import org.jreleaser.model.api.download.Downloader;
@@ -45,7 +46,7 @@ import static org.jreleaser.extensions.opentelemetry.OtelUtils.OTEL_PREFIX;
 
 /**
  * @author Andres Almiray
- * @since 1.3.0
+ * @since 1.0.0
  */
 public final class OpenTelemetryWorkflowListener implements WorkflowListener {
     private static final String CONTINUE_ON_ERROR = "continueOnError";
@@ -149,6 +150,11 @@ public final class OpenTelemetryWorkflowListener implements WorkflowListener {
 
     @Override
     public void onAssembleStep(ExecutionEvent event, JReleaserContext context, Assembler assembler) {
+
+    }
+
+    @Override
+    public void onCatalogStep(ExecutionEvent event, JReleaserContext context, Cataloger cataloger) {
 
     }
 

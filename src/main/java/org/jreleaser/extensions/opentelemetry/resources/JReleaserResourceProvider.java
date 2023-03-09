@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022 The JReleaser authors.
+ * Copyright 2022-2023 The JReleaser authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -27,7 +27,7 @@ import org.kordamp.jipsy.annotations.ServiceProviderFor;
 
 /**
  * @author Andres Almiray
- * @since 1.3.0
+ * @since 1.0.0
  */
 @ServiceProviderFor(ResourceProvider.class)
 public class JReleaserResourceProvider implements ResourceProvider {
