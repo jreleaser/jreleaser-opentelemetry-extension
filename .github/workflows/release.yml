@@ -1,7 +1,7 @@
 #
 # SPDX-License-Identifier: Apache-2.0
 #
-# Copyright 2022 The JReleaser authors.
+# Copyright 2022-2024 The JReleaser authors.
 #
 # Licensed under the Apache License, Version 2.0 (the "License");
 # you may not use this file except in compliance with the License.
@@ -43,3 +43,6 @@ jobs:
       twitter-access-token: ${{ secrets.TWITTER_ACCESS_TOKEN }}
       twitter-access-token-secret: ${{ secrets.TWITTER_ACCESS_TOKEN_SECRET }}
       mastodon-access-token: ${{ secrets.MASTODON_ACCESS_TOKEN }}
+      bluesky-host: ${{ secrets.BLUESKY_HOST }}
+      bluesky-handle: ${{ secrets.BLUESKY_HANDLE }}
+      bluesky-password: ${{ secrets.BLUESKY_PASSWORD }}

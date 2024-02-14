@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022-2023 The JReleaser authors.
+ * Copyright 2022-2024 The JReleaser authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -18,14 +18,9 @@
 package org.jreleaser.extensions.opentelemetry;
 
 import io.opentelemetry.sdk.autoconfigure.AutoConfiguredOpenTelemetrySdk;
-import io.opentelemetry.sdk.autoconfigure.spi.ConfigProperties;
-import io.opentelemetry.sdk.resources.Resource;
 
 import java.util.Arrays;
-import java.util.LinkedHashMap;
 import java.util.List;
-import java.util.Map;
-import java.util.stream.Collectors;
 
 /**
  * OpenTelemetry utility class.
@@ -53,6 +48,7 @@ final class OtelUtils {
                 "otel.resource.attributes",
                 "otel.service.name");
 
+        /*
         ConfigProperties sdkConfig = autoConfiguredOpenTelemetrySdk.getConfig();
         Map<String, String> configurationAttributes = new LinkedHashMap<>();
         for (String attributeName : configAttributeNames) {
@@ -70,5 +66,8 @@ final class OtelUtils {
             .collect(Collectors.joining(", "))
             + ", Resource: "
             + sdkResource.getAttributes();
+
+         */
+        return "";
     }
 }

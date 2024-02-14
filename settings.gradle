@@ -1,7 +1,7 @@
 /*
  * SPDX-License-Identifier: Apache-2.0
  *
- * Copyright 2022-2023 The JReleaser authors.
+ * Copyright 2022-2024 The JReleaser authors.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -29,7 +29,7 @@ buildscript {
 }
 apply plugin: 'org.kordamp.gradle.kordamp-parentbuild'
 
-rootProject.name = 'jreleaser-jfr-extension'
+rootProject.name = 'jreleaser-opentelemetry-extension'
 
 projects {
     plugins {
@@ -45,10 +45,24 @@ projects {
 enforce {
     mergeStrategy = 'append'
 
+    rule(enforcer.rules.BanDuplicateClasses) { r ->
+        r.ignoreWhenIdentical.set(true)
+        r.dependency("com.google.guava:guava:$guavaVersion".toString()) { d->
+            d.ignore('com.google.common.*')
+        }
+    }
+
     rule(enforcer.rules.ForceDependencies) { r ->
         r.dependencies.addAll "org.codehaus.plexus:plexus-utils:$plexusVersion",
             "com.google.errorprone:error_prone_annotations:$errorproneVersion",
+            "com.google.guava:guava:$guavaVersion",
+            "commons-codec:commons-codec:$commonsCodecVersion",
+            "io.opentelemetry:opentelemetry-api:${opentelemetryVersion}",
+            "org.apache.commons:commons-lang3:$commonsLang3Version",
+            "org.apache.httpcomponents:httpcore:$httpcoreVersion",
             "org.jetbrains.kotlin:kotlin-stdlib:$kotlinVersion",
-            "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlinVersion"
+            "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlinVersion",
+            "org.jetbrains.kotlin:kotlin-stdlib-common:$kotlinVersion",
+            "org.slf4j:slf4j-api:$slf4jVersion"
     }
 }
